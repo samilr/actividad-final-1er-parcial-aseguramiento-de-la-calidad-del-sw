@@ -48,6 +48,21 @@ Este documento proporciona instrucciones detalladas sobre cómo realizar pruebas
 2. Validar que el código de respuesta HTTP sea 200.
 3. Verificar que la lista de pedidos no esté vacía.
 
+**Caso de Uso 6: Crear un nuevo pedido**
+**Descripción**: Este caso de uso verifica que se pueda crear un nuevo pedido, asegurándose de que la respuesta contenga los detalles correctos del pedido creado.
+
+**Pasos**:
+Preparar los Datos del Pedido:
+
+Se deben definir los datos para el nuevo pedido, como el bookId (ID del libro) y el customerName (nombre del cliente).
+Realizar una Solicitud POST al Endpoint /orders:
+
+Realizar una solicitud POST al endpoint /orders, enviando los datos del pedido como cuerpo de la solicitud en formato JSON. Se debe incluir la cabecera de autorización con el token adecuado.
+Verificar el Código de Respuesta HTTP:
+
+Validar que la respuesta devuelta tenga un código de estado HTTP 201, lo que indica que el pedido ha sido creado exitosamente.
+Verificar la Información del Pedido:
+
 ---
 
 ## Diseño de Pruebas Unitarias

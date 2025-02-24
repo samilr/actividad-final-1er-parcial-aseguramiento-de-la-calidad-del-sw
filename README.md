@@ -1,7 +1,4 @@
-# Generando el archivo README.md con las instrucciones proporcionadas
-
-readme_content = """
-# README - Instrucciones para Pruebas Unitarias
+Instrucciones para Pruebas Unitarias
 
 Este documento proporciona instrucciones detalladas sobre cómo realizar pruebas unitarias para una API que maneja libros y pedidos, utilizando `pytest` para Python. A continuación, se describen los pasos para la implementación de las pruebas, incluyendo los casos de uso, el diseño de las pruebas, la implementación en un repositorio de Git, y la documentación relevante.
 

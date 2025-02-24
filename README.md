@@ -129,7 +129,7 @@ def test_create_order():
 
 1. **Clonar el Repositorio**: Si aún no lo has hecho, clona el repositorio de tu proyecto.
    ```bash
-   git clone <URL_DEL_REPOSITORIO>
+   git clone "https://github.com/samilr/actividad-final-1er-parcial-aseguramiento-de-la-calidad-del-sw"
    ```
 
 2. **Crear un Nuevo Archivo de Pruebas**: Crea un archivo llamado `test_book_api.py` y agrega las pruebas unitarias descritas arriba.

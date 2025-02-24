@@ -1,3 +1,4 @@
+
 Instrucciones para Pruebas Unitarias
 
 Este documento proporciona instrucciones detalladas sobre cómo realizar pruebas unitarias para una API que maneja libros y pedidos, utilizando `pytest` para Python. A continuación, se describen los pasos para la implementación de las pruebas, incluyendo los casos de uso, el diseño de las pruebas, la implementación en un repositorio de Git, y la documentación relevante.
@@ -60,3 +61,117 @@ def test_status_code():
     response = requests.get(f"{BASE_URL}/status")
     assert response.status_code == 200
     assert response.json()['status'] == 'OK'
+```
+
+### 2. Obtener libros de la categoría "No Ficción"
+
+```python
+def test_get_non_fiction_books():
+    response = requests.get(f"{BASE_URL}/books", params={"type": "non-fiction"})
+    assert response.status_code == 200
+    books = response.json()
+    non_fiction_books = [book for book in books if book['available'] == True]
+    assert len(non_fiction_books) > 0, "No available non-fiction books found"
+```
+
+### 3. Obtener un libro específico
+
+```python
+def test_get_single_book():
+    book_id = 1  
+    response = requests.get(f"{BASE_URL}/books/{book_id}")
+    assert response.status_code == 200
+    book = response.json()
+    assert book['id'] == book_id
+```
+
+### 4. Realizar un pedido de un libro
+
+```python
+def test_order_book():
+    order_data = {
+        "bookId": 1, 
+        "customerName": "Samir"
+    }
+    response = requests.post(f"{BASE_URL}/orders", json=order_data, headers=headers)
+    assert response.status_code == 201
+```
+
+### 5. Obtener todos los pedidos
+
+```python
+def test_get_all_orders():
+    headers = {'Authorization': f'Bearer {TOKEN}'}
+    response = requests.get(f"{BASE_URL}/orders", headers=headers)
+    assert response.status_code == 200
+    orders = response.json()
+    assert len(orders) > 0, "No orders found"
+```
+
+### 6. Crear un nuevo pedido
+
+```python
+def test_create_order():
+    data = {
+        "bookId": 1,
+        "customerName": "Alfreda"
+    }
+    response = requests.post(f"{BASE_URL}/orders", headers=headers, json=data)
+    assert response.status_code == 201
+    order = response.json()
+    assert order['created'] is True
+    assert 'orderId' in order
+```
+
+---
+
+## Implementación en un Repositorio de Git
+
+1. **Clonar el Repositorio**: Si aún no lo has hecho, clona el repositorio de tu proyecto.
+   ```bash
+   git clone <URL_DEL_REPOSITORIO>
+   ```
+
+2. **Crear un Nuevo Archivo de Pruebas**: Crea un archivo llamado `test_book_api.py` y agrega las pruebas unitarias descritas arriba.
+
+3. **Instalar Dependencias**:
+   Si aún no tienes `requests` y `pytest` instalados, usa el siguiente comando:
+   ```bash
+   pip install requests pytest
+   ```
+
+4. **Ejecutar las Pruebas**: Para ejecutar las pruebas en el archivo, usa el siguiente comando:
+   ```bash
+   pytest test_book_api.py
+   ```
+
+5. **Subir los Cambios al Repositorio**:
+   - Agrega los cambios al repositorio.
+   ```bash
+   git add test_book_api.py
+   ```
+
+   - Realiza un commit con un mensaje descriptivo.
+   ```bash
+   git commit -m "Añadidas pruebas unitarias para la API de libros"
+   ```
+
+   - Sube los cambios al repositorio remoto.
+   ```bash
+   git push origin main
+   ```
+
+---
+
+## Documentación
+
+- **`test_status_code`**: Verifica que la API esté operativa y que el endpoint `/status` devuelva un estado "OK".
+- **`test_get_non_fiction_books`**: Se asegura de que los libros de la categoría "no ficción" estén disponibles y retornados correctamente.
+- **`test_get_single_book`**: Valida que un libro específico se puede obtener correctamente usando su ID.
+- **`test_order_book`**: Realiza un pedido para un libro específico y verifica que el pedido se crea correctamente.
+- **`test_get_all_orders`**: Obtiene todos los pedidos realizados y verifica que la respuesta no esté vacía.
+- **`test_create_order`**: Valida que la creación de un pedido sea exitosa y que contenga el campo `orderId` y `created`.
+
+---
+
+Con estos pasos, las pruebas unitarias cubrirán los casos de uso básicos de la API y se podrán ejecutar de manera confiable en cualquier entorno de desarrollo o CI/CD.

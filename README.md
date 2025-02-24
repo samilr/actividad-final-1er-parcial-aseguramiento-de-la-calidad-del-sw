@@ -48,7 +48,7 @@ Este documento proporciona instrucciones detalladas sobre cómo realizar pruebas
 2. Validar que el código de respuesta HTTP sea 200.
 3. Verificar que la lista de pedidos no esté vacía.
 
-**Caso de Uso 6: Crear un nuevo pedido**
+## Caso de Uso 6: Crear un nuevo pedido
 **Descripción**: Este caso de uso verifica que se pueda crear un nuevo pedido, asegurándose de que la respuesta contenga los detalles correctos del pedido creado.
 
 **Pasos**:

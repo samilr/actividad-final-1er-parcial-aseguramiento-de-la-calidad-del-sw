@@ -1,5 +1,3 @@
-## Documento: https://unibedom-my.sharepoint.com/:w:/g/personal/sgonzalez14_est_unibe_edu_do/EUvr3tzj44JJoEDvZSh9AK8B-2H8rXqYZpD7GWVjl-Q9IQ?e=Ko6FIs
-
 ## Video: https://unibedom-my.sharepoint.com/:f:/g/personal/sgonzalez14_est_unibe_edu_do/En1U9B1ENBJNgP_43vqmV1oBvZryUePBg_aAWMN7JvcGHw?e=unUCGJ
 
 Instrucciones para Pruebas Unitarias
